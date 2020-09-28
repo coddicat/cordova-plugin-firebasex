@@ -1365,7 +1365,7 @@ public class FirebasePlugin extends CordovaPlugin {
     }
 
     private boolean isValidJsonCredential(JSONObject jsonCredential) throws JSONException{
-        return true; //jsonCredential.has("id") || (jsonCredential.has("verificationId") && jsonCredential.has("code"));
+        return jsonCredential.has("id") || (jsonCredential.has("verificationId") && jsonCredential.has("code"));
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
