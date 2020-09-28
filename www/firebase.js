@@ -424,3 +424,7 @@ exports.removeFirestoreListener = function (success, error, listenerId) {
 
     exec(success, error, "FirebasePlugin", "removeFirestoreListener", [listenerId.toString()]);
 };
+
+exports.saveFacebookCredential = function (token, success, error) {
+    exec(success, error, "FirebasePlugin", "saveFacebookCredential", [token]);
+};
