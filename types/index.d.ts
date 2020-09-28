@@ -348,5 +348,10 @@ interface FirebasePlugin {
         error: (err: string) => void,
         listenerId: string
     ): void
+    saveFacebookCredential(
+        token: string,
+        success: () => void,
+        error: (err: string) => void
+    ): void
 }
 declare var FirebasePlugin: FirebasePlugin;

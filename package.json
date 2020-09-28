@@ -1,7 +1,7 @@
 {
-  "name": "cordova-plugin-firebasex",
-  "version": "11.0.1",
-  "description": "Cordova plugin for Google Firebase",
+  "name": "cordova-plugin-firebasex-facebook",
+  "version": "1.0.0",
+  "description": "Cordova plugin for Google Firebase with Facebook Get Credential",
   "types": "./types/index.d.ts",
   "author": {
     "name": "Dave Alden"
@@ -9,10 +9,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dpa99c/cordova-plugin-firebase"
+    "url": "https://github.com/coddicat/cordova-plugin-firebasex"
   },
   "cordova": {
-    "id": "cordova-plugin-firebase",
+    "id": "cordova-plugin-firebase-facebook",
     "platforms": [
       "android",
       "ios"
@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "plist": "^3.0.1",
+    "semver": "^7.3.2",
     "xcode": "^3.0.1",
-    "xml-js": "^1.6.11",
-    "semver": "^7.3.2"
+    "xml-js": "^1.6.11"
   }
 }

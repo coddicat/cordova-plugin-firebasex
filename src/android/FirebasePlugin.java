@@ -46,6 +46,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.OAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.CollectionReference;
@@ -353,6 +354,8 @@ public class FirebasePlugin extends CordovaPlugin {
                 this.listenToFirestoreCollection(args, callbackContext);
             } else if (action.equals("removeFirestoreListener")) {
                 this.removeFirestoreListener(args, callbackContext);
+            } else if (action.equals("saveFacebookCredential")) {
+                this.saveFacebookCredential(callbackContext, args);
             } else if (action.equals("grantPermission")
                     || action.equals("setBadgeNumber")
                     || action.equals("getBadgeNumber")
@@ -2571,6 +2574,23 @@ public class FirebasePlugin extends CordovaPlugin {
         this.authCredentials.put(id, authCredential);
         return id;
     }
+
+    public void saveFacebookCredential(final CallbackContext callbackContext, final JSONArray args){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                try {
+					String token = args.getString(0);
+                    AuthCredential credential = FacebookAuthProvider.getCredential(token);
+                    String id = FirebasePlugin.instance.saveAuthCredential(credential);
+                    callbackContext.success(id);
+                } catch (Exception e) {
+                    handleExceptionWithContext(e, callbackContext);
+                }
+            }
+        });
+    }
+
+
 
     private String saveAuthProvider(OAuthProvider authProvider){
         String id = this.generateId();
